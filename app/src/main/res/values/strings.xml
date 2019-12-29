@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FWApp</string>
+
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="contacts">Contacts</string>
+    <string name="search">Search</string>
+    <string name="sort">Sort</string>
 </resources>
