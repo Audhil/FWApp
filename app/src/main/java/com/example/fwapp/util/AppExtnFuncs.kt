@@ -6,20 +6,48 @@ import android.widget.Toast
 import com.example.fwapp.AppApplication
 
 inline fun Any.showVLog(log: () -> String) =
-    Log.v("---" + this::class.java.simpleName, log())
+    FLog.v("---" + this::class.java.simpleName, log())
 
 inline fun Any.showELog(log: () -> String) =
-    Log.e("---" + this::class.java.simpleName, log())
+    FLog.e("---" + this::class.java.simpleName, log())
 
 inline fun Any.showDLog(log: () -> String) =
-    Log.d("---" + this::class.java.simpleName, log())
+    FLog.d("---" + this::class.java.simpleName, log())
 
 inline fun Any.showILog(log: () -> String) =
-    Log.i("---" + this::class.java.simpleName, log())
+    FLog.i("---" + this::class.java.simpleName, log())
 
 inline fun Any.showWLog(log: () -> String) =
-    Log.w("---" + this::class.java.simpleName, log())
+    FLog.w("---" + this::class.java.simpleName, log())
 
+object FLog {
+    val DEBUG_BOOL = true
+
+    fun v(tag: String, msg: String) {
+        if (DEBUG_BOOL)
+            Log.v(tag, msg)
+    }
+
+    fun e(tag: String, msg: String) {
+        if (DEBUG_BOOL)
+            Log.e(tag, msg)
+    }
+
+    fun d(tag: String, msg: String) {
+        if (DEBUG_BOOL)
+            Log.d(tag, msg)
+    }
+
+    fun i(tag: String, msg: String) {
+        if (DEBUG_BOOL)
+            Log.i(tag, msg)
+    }
+
+    fun w(tag: String, msg: String) {
+        if (DEBUG_BOOL)
+            Log.w(tag, msg)
+    }
+}
 
 var toast: Toast? = null
 

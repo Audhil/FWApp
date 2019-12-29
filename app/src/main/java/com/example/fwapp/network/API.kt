@@ -1,10 +1,10 @@
 package com.example.fwapp.network
 
+import com.example.fwapp.model.api.UserDetail
 import io.reactivex.Flowable
-import okhttp3.ResponseBody
 import retrofit2.http.GET
 
 interface API {
     @GET("/users")
-    fun grabUsers(): Flowable<ResponseBody>
+    fun grabUsers(): Flowable<List<UserDetail>>
 }

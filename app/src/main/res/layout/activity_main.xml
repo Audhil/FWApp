@@ -36,6 +36,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
+            tools:listitem="@layout/list_item"
+            tools:visibility="gone" />
+
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/loading_requests"
             style="?android:attr/progressBarStyleLarge"
@@ -48,6 +60,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_bar_layout"
             tools:visibility="invisible" />
+
+        <include
+            layout="@layout/empty_item"
+            android:visibility="@{view_model.isListEmpty ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

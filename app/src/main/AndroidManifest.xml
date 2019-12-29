@@ -15,7 +15,6 @@
 
         <activity
             android:name=".ui.main.MainActivity"
-            android:label="@string/contacts"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

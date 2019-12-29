@@ -5,4 +5,9 @@
     <string name="contacts">Contacts</string>
     <string name="search">Search</string>
     <string name="sort">Sort</string>
+
+    <string name="user_profile_pic">User profile pic</string>
+    <string name="search_contacts_hint">Search contacts</string>
+
+    <string name="empty_text">No data to show :-(</string>
 </resources>
