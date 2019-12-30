@@ -1,5 +1,6 @@
 package com.example.fwapp.ui.main
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fwapp.BR
 import com.example.fwapp.databinding.ListItemBinding
 import com.example.fwapp.model.api.UserDetail
+import com.example.fwapp.util.AppUtil
+import java.util.*
 
 class ContactsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
 
@@ -20,7 +23,13 @@ class ContactsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filtera
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        ContactsViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        ContactsViewHolder(
+            ListItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun getItemCount(): Int = listItems.size
 
@@ -84,9 +93,28 @@ class ContactsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filtera
         private val binding: ListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        private val rnd by lazy {
+            Random()
+        }
+
         fun bind(position: Int, userDetail: UserDetail) {
             binding.apply {
                 setVariable(BR.user_detail, userDetail)
+                userDetail.name?.substring(0, 1)?.let {
+                    alphabetTxtView.text =
+                        if (position == 0 ||
+                            !listItems[position - 1].name?.substring(0, 1).equals(it, true)
+                        )
+                            it
+                        else
+                            AppUtil.BLANK_SPACE
+
+                    initialTxtView.apply {
+                        text = it
+                        solidColor =
+                            Color.argb(255, rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255))
+                    }
+                }
                 executePendingBindings()
             }
         }

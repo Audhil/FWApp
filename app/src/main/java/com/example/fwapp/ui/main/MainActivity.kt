@@ -98,10 +98,10 @@ class MainActivity : BaseLifeCycleActivity<ActivityMainBinding, MainViewModel>()
 
         when (item.itemId) {
             R.id.action_sort -> {
-                if (reverseToggle)
-                    "sorted (A-Z)!".showToast()
+                (if (reverseToggle)
+                    "sorted (A-Z)!"
                 else
-                    "sorted (Z-A)!".showToast()
+                    "sorted (Z-A)!").showToast()
                 reverseToggle = !reverseToggle
                 reversedList.apply {
                     clear()

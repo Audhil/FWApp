@@ -25,7 +25,6 @@ constructor(
     }
 
     override fun onSuccess(obj: Any?, tag: String) {
-
         when (tag) {
             TAG ->
                 (obj as? ArrayList<*>)?.let {
